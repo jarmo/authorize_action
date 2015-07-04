@@ -4,7 +4,7 @@
 [![Build Status](https://api.travis-ci.org/jarmo/authorize_action.png)](http://travis-ci.org/jarmo/authorize_action)
 [![Coverage](https://coveralls.io/repos/jarmo/authorize_action/badge.png?branch=master)](https://coveralls.io/r/jarmo/authorize_action)
 [![Dependency Status](https://gemnasium.com/jarmo/authorize_action.png)](https://gemnasium.com/jarmo/authorize_action)
-[![Code Climate](https://codeclimate.com/github/jarmo/authorize_action.png)](https://codeclimate.com/github/jarmo/authorize_action)
+[![Code Climate](https://codeclimate.com/github/jarmo/authorize_action/badges/gpa.svg)](https://codeclimate.com/github/jarmo/authorize_action)
 
 Really **secure** and **simple** authorization library for your [Rails](http://rubyonrails.org/), [Sinatra](http://www.sinatrarb.com/) or whatever web framework, which doesn't suck.
 
