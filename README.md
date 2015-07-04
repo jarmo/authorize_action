@@ -1,5 +1,11 @@
 # AuthorizeAction
 
+[![Gem Version](https://badge.fury.io/rb/authorize_action.png)](http://badge.fury.io/rb/authorize_action)
+[![Build Status](https://api.travis-ci.org/jarmo/authorize_action.png)](http://travis-ci.org/jarmo/authorize_action)
+[![Coverage](https://coveralls.io/repos/jarmo/authorize_action/badge.png?branch=master)](https://coveralls.io/r/jarmo/authorize_action)
+[![Dependency Status](https://gemnasium.com/jarmo/authorize_action.png)](https://gemnasium.com/jarmo/authorize_action)
+[![Code Climate](https://codeclimate.com/github/jarmo/authorize_action.png)](https://codeclimate.com/github/jarmo/authorize_action)
+
 Really **secure** and **simple** authorization library for your [Rails](http://rubyonrails.org/), [Sinatra](http://www.sinatrarb.com/) or whatever web framework, which doesn't suck.
 
 According to [Ruby Toolbox](https://www.ruby-toolbox.com/categories/rails_authorization) there are at least 28 authorization libraries/frameworks available just for Rails. And yet, they all suck. At least that's why i've never used any of them in my projects. All of this is the reason i've finally decided to create my own library to solve the problem of authorization once and for all for all Ruby (web) frameworks.
