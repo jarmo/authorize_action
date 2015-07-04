@@ -2,7 +2,7 @@
 
 [![Gem Version](https://badge.fury.io/rb/authorize_action.png)](http://badge.fury.io/rb/authorize_action)
 [![Build Status](https://api.travis-ci.org/jarmo/authorize_action.png)](http://travis-ci.org/jarmo/authorize_action)
-[![Coverage](https://coveralls.io/repos/jarmo/authorize_action/badge.png?branch=master)](https://coveralls.io/r/jarmo/authorize_action)
+[![Coverage Status](https://coveralls.io/repos/jarmo/authorize_action/badge.svg?branch=master)](https://coveralls.io/r/jarmo/authorize_action?branch=master)
 [![Dependency Status](https://gemnasium.com/jarmo/authorize_action.png)](https://gemnasium.com/jarmo/authorize_action)
 [![Code Climate](https://codeclimate.com/github/jarmo/authorize_action/badges/gpa.svg)](https://codeclimate.com/github/jarmo/authorize_action)
 
