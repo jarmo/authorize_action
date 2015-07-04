@@ -196,10 +196,6 @@ class BaseController
 end
 ```
 
-## Contributing
+## License
 
-1. Fork it ( https://github.com/[my-github-username]/authorize_action/fork )
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request
+Copyright (c) Jarmo Pertman (jarmo.p@gmail.com). See [LICENSE](https://github.com/jarmo/authorize_action/blob/master/LICENSE.txt) for details.
