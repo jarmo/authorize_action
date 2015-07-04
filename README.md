@@ -89,15 +89,15 @@ class PostsController < ApplicationController
   # to specify the actual access rules.
   def authorization_rules
     {
-      # Calling Proc object for :index action returns `true`
+      # Calling Proc object for :index action returns true
       # thus everyone will have access to that action
       index: -> { true },
      
       # Calling Proc object for :edit action returns true only
-      # when Post owner matches `current_user`
+      # when Post owner matches current_user
       edit: -> { Post.find(params[:id]).owner == current_user },
       
-      # Calling referenced `#admin?` method for :destroy action
+      # Calling referenced #admin? method for :destroy action
       # returns true only for administrators
       destroy: -> method(:admin?)
     }
@@ -140,15 +140,15 @@ class Blog < Sinatra::Base
   # to specify the actual access rules.
   def authorization_rules
     {
-      # Calling Proc object for `GET /posts` action returns `true`
+      # Calling Proc object for `GET /posts` action returns true
       # thus everyone will have access to that action
       action(:get, "/posts") => -> { true },
       
       # Calling Proc object for `GET /posts/:id/edit` action
-      # returns true only when Post owner matches `current_user`
+      # returns true only when Post owner matches current_user
       action(:get, "/posts/:id/edit") => -> { Post.find(params[:id]).owner == current_user },
       
-      # Calling referenced `#admin?` method for `DELETE /posts/:id` action
+      # Calling referenced #admin? method for `DELETE /posts/:id` action
       # returns true only for administrators
       action(:delete, "/posts/:id") => method(:admin?)
     }
@@ -159,6 +159,40 @@ class Blog < Sinatra::Base
     # ...
   end
 
+end
+```
+
+### Other
+
+```ruby
+class BaseController
+  # Include authorize_action generic methods
+  include AuthorizeAction
+  
+  # Call #authorize_action! before executing any controller actions.
+  before_any_action :authorize_action!
+  
+  private
+  
+  # Override AuthorizeAction#current_action_name to implement it.
+  # It is expected to return a Symbol/String object with an unique
+  # controller action identifier.
+  def current_action_name
+    # ...
+  end
+  
+  # Override AuthorizeAction#forbid_action! to halt execution 
+  # of controller action by rendering HTTP 403.
+  def forbid_action!
+    # ...
+  end
+  
+  # Define #authorization_rules method which returns Hash<String,Proc> where
+  # keys are in the exact same format as returned by #current_action_name
+  # and values are Proc objects returning booleans.
+  def authorization_rules
+    # ...
+  end
 end
 ```
 
