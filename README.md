@@ -222,7 +222,7 @@ end
 ### Administrator Has Access to Every Action
 
 There is no API for giving access to administrator for every possible action.
-Nevertheless it can be achieved easily by just using
+Nevertheless it can be achieved easily by just following
 object-oriented programming principles.
 
 Example below is based on Rails and Devise, but
@@ -243,9 +243,24 @@ class ApplicationController < ActionController::Base
 end
 ```
 
-Please make sure that this is what you really want.
+Please make sure that you really-really need to do that!
 
 ### Protecting Your Views
+
+You have protected your actions with _authorize_action_ and your models with [Strong Parameters](https://github.com/rails/strong_parameters) (or something similar), but what about views?
+
+Again, there is no separate API for that, but why not use regular Ruby methods to do that?
+
+Here's an example:
+```ruby
+# views/posts/edit.html.erb
+
+<% if current_user.admin? %>
+  <%= link_to "Delete", @post, method: :delete
+<% end %>
+```
+
+Next step would be to create some helper class or module for roles.
 
 ## License
 
