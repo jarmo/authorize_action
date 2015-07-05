@@ -18,7 +18,7 @@ describe AuthorizeAction::Sinatra do
   it "#current_action_name finds Sinatra's action name from request" do
     request = double("request", request_method: "GET", path_info: "/foo/bar")
     allow(authorizator).to receive(:request).and_return(request)
-    expect(authorizator).to receive(:action).and_return("action-name".to_sym)
+    expect(authorizator.class).to receive(:action).and_return("action-name".to_sym)
 
     expect(authorizator.send(:current_action_name)).to eq("action-name".to_sym)
   end
@@ -35,7 +35,7 @@ describe AuthorizeAction::Sinatra do
       }
       expect(authorizator.class).to receive(:routes).and_return(routes)
 
-      expect(authorizator.action(:get, "/bar/baz")).to eq("GET /bar/baz".to_sym)
+      expect(authorizator.class.action(:get, "/bar/baz")).to eq("GET /bar/baz".to_sym)
     end
 
     it "returns request path when Sinatra route found, but no route name exists" do
@@ -49,7 +49,7 @@ describe AuthorizeAction::Sinatra do
       }
       expect(authorizator.class).to receive(:routes).and_return(routes)
 
-      expect(authorizator.action(:get, "/foo/baz")).to eq("GET /foo/baz".to_sym)
+      expect(authorizator.class.action(:get, "/foo/baz")).to eq("GET /foo/baz".to_sym)
     end
 
     it "returns Sinatra's GET method route name" do
@@ -67,7 +67,7 @@ describe AuthorizeAction::Sinatra do
       }
       expect(authorizator.class).to receive(:routes).and_return(routes)
 
-      expect(authorizator.action(:get, "/foo/baz")).to eq("GET /foo/:bar".to_sym)
+      expect(authorizator.class.action(:get, "/foo/baz")).to eq("GET /foo/:bar".to_sym)
     end
 
     it "returns Sinatra's POST method route name" do
@@ -85,7 +85,7 @@ describe AuthorizeAction::Sinatra do
       }
       expect(authorizator.class).to receive(:routes).and_return(routes)
 
-      expect(authorizator.action(:post, "/foo/baz")).to eq("POST /foo/:bar".to_sym)
+      expect(authorizator.class.action(:post, "/foo/baz")).to eq("POST /foo/:bar".to_sym)
     end
   end
 

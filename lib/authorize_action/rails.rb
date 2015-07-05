@@ -2,6 +2,10 @@ module AuthorizeAction
   module Rails
     include AuthorizeAction
 
+    def self.included(base)
+      AuthorizeAction.included(base)
+    end
+
     private
 
     def forbid_action!

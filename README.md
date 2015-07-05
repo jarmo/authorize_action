@@ -46,7 +46,7 @@ compared to all the rest:
 
 * Has a **lightweight** codebase
   * Due to the simplicity of _authorize_action_ its codebase is really simple, clean and foolproof.
-    Entire codebase used in _production_ is just about **~60 lines**.
+    Entire codebase used in _production_ is under **100 lines**.
     If you're not sure what exactly happens when you use _authorize_action_ in your project
     then you can understand it all quickly by looking at [the code](https://github.com/jarmo/authorize_action/tree/master/lib).
 
@@ -79,8 +79,7 @@ Or install it yourself as:
 
 * Load _authorize_action_ gem
 * Include framework specific module into base controller
-* Define authorization rules by defining a method `#authorization_rules`,
-  which returns a `Hash<String,Proc>` object
+* Define authorization rules for each controller/class
 * Call `#authorize_action!` method before executing action
 
 ### Rails
@@ -103,35 +102,31 @@ class ApplicationController < ActionController::Base
 end
 
 class PostsController < ApplicationController
-  # everyone has access to :index
+  # Everyone has access to :index
   def index
     # ...
   end
   
-  # only post owner has access to :edit 
+  # Only post owner has access to :edit 
   def edit
     # ...
   end
   
-  private
-  
-  # authorization_rules method is needed to be defined for each controller
-  # to specify the actual access rules.
-  def authorization_rules
-    {
-      # Calling Proc object for :index action returns true
-      # thus everyone will have access to that action
-      index: -> { true },
-     
-      # Calling Proc object for :edit action returns true only
-      # when Post owner matches current_user
-      edit: -> { Post.find(params[:id]).owner == current_user },
-      
-      # Calling referenced #admin? method for :destroy action
-      # returns true only for administrators
-      destroy: -> method(:admin?)
-    }
-  end
+  # Authorization rules have to be defined for each controller
+  # action to specify the actual access rules.
+  self.authorization_rules = {
+    # Calling Proc object for :index action returns true
+    # thus everyone will have access to that action
+    index: -> { true },
+   
+    # Calling Proc object for :edit action returns true only
+    # when Post owner matches current_user
+    edit: -> { Post.find(params[:id]).owner == current_user },
+    
+    # Calling referenced #admin? method for :destroy action
+    # returns true only for administrators
+    destroy: -> method(:admin?)
+  }
 end
 ```
 
@@ -149,40 +144,36 @@ class Blog < Sinatra::Base
   # Allow requests to `public/` directory if you want.
   before { authorize_action! unless request.path_info.start_with?(settings.public_folder) }
   
-  # everyone has access to reading posts
+  # Everyone has access to reading posts
   get "/posts" do
     # ...
   end
   
-  # only post owner has access to editing post
+  # Only post owner has access to editing post
   get "/posts/:id/edit" do
     # ...
   end
   
-  # only administrator can delete posts
+  # Only administrator can delete posts
   delete "/posts/:id" do
     # ...
   end
   
-  private 
-  
-  # authorization_rules method is needed to be defined for each route
+  # Authorization rules have to be defined for each route
   # to specify the actual access rules.
-  def authorization_rules
-    {
-      # Calling Proc object for `GET /posts` action returns true
-      # thus everyone will have access to that action
-      action(:get, "/posts") => -> { true },
-      
-      # Calling Proc object for `GET /posts/:id/edit` action
-      # returns true only when Post owner matches current_user
-      action(:get, "/posts/:id/edit") => -> { Post.find(params[:id]).owner == current_user },
-      
-      # Calling referenced #admin? method for `DELETE /posts/:id` action
-      # returns true only for administrators
-      action(:delete, "/posts/:id") => method(:admin?)
-    }
-  end
+  self.authorization_rules = {
+    # Calling Proc object for `GET /posts` action returns true
+    # thus everyone will have access to that action
+    action(:get, "/posts") => -> { true },
+    
+    # Calling Proc object for `GET /posts/:id/edit` action
+    # returns true only when Post owner matches current_user
+    action(:get, "/posts/:id/edit") => -> { Post.find(params[:id]).owner == current_user },
+    
+    # Calling referenced #admin? method for `DELETE /posts/:id` action
+    # returns true only for administrators
+    action(:delete, "/posts/:id") => method(:admin?)
+  }
   
   # Helper method for administrator role
   def admin?
@@ -217,12 +208,12 @@ class BaseController
     # ...
   end
   
-  # Define #authorization_rules method which returns Hash<String,Proc> where
-  # keys are in the exact same format as returned by #current_action_name
+  # Set authorization rules where keys are in the exact same format
+  # as returned by #current_action_name
   # and values are Proc objects returning booleans.
-  def authorization_rules
+  self.authorization_rules = {
     # ...
-  end
+  }
 end
 ```
 
