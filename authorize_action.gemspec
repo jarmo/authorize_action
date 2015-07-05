@@ -4,12 +4,11 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |spec|
   spec.name          = "authorize_action"
-  spec.version       = "0.0.1"
+  spec.version       = "1.0.0"
   spec.authors       = ["Jarmo Pertman"]
   spec.email         = ["jarmo.p@gmail.com"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
-  spec.homepage      = ""
+  spec.summary       = %q{Really secure and simple authorization library for your Rails, Sinatra or whatever web framework, which doesn't suck.}
+  spec.homepage      = "https://github.com/jarmo/authorize_action"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
