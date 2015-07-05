@@ -226,11 +226,13 @@ class BaseController
 end
 ```
 
-## Administrator access
+## Tips & Tricks
 
-If administrator has access to every action then it might be tedious
-to give him/her access with authorization rules for every action.
-There is however an easy way to achieve that functionality.
+### Administrator Has Access to Every Action
+
+There is no API for giving access to administrator for every possible action.
+Nevertheless it can be achieved easily by just using
+object-oriented programming principles.
 
 Example below is based on Rails and Devise, but
 the idea is the same for whatever framework:
@@ -249,6 +251,10 @@ class ApplicationController < ActionController::Base
   end
 end
 ```
+
+Please make sure that this is what you really want.
+
+### Protecting Your Views
 
 ## License
 
