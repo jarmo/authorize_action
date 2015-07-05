@@ -51,6 +51,15 @@ describe AuthorizeAction do
       authorizator.class.authorization_rules = {action: -> { "truthy" }}
       authorizator.authorize_action!
     end
+
+    it "executes instance method if authorization rule is defined as Symbol" do
+      allow(authorizator).to receive(:current_action_name).and_return(:action)
+      expect(authorizator).to receive(:admin?).and_return(true)
+      expect(authorizator).to_not receive(:forbid_action!)
+
+      authorizator.class.authorization_rules = {action: :admin?}
+      authorizator.authorize_action!
+    end
   end
 
   it "#authorization_rules are not defined by default" do

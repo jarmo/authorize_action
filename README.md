@@ -125,7 +125,7 @@ class PostsController < ApplicationController
     
     # Calling referenced #admin? method for :destroy action
     # returns true only for administrators
-    destroy: -> method(:admin?)
+    destroy: -> :admin?
   }
 end
 ```
@@ -172,7 +172,7 @@ class Blog < Sinatra::Base
     
     # Calling referenced #admin? method for `DELETE /posts/:id` action
     # returns true only for administrators
-    action(:delete, "/posts/:id") => method(:admin?)
+    action(:delete, "/posts/:id") => :admin?
   }
   
   # Helper method for administrator role

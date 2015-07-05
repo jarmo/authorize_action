@@ -4,7 +4,10 @@ module AuthorizeAction
 
   def authorize_action!
     authorization_rule = self.class.authorization_rules && self.class.authorization_rules[current_action_name]
-    action_permitted = authorization_rule && instance_exec(&authorization_rule)
+    action_permitted = case authorization_rule 
+                       when Proc then instance_exec(&authorization_rule)
+                       when Symbol then send(authorization_rule)
+                       end
     forbid_action! unless action_permitted
   end
 
