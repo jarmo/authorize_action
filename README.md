@@ -256,7 +256,7 @@ Here's an example:
 # views/posts/edit.html.erb
 
 <% if current_user.admin? %>
-  <%= link_to "Delete", @post, method: :delete
+  <%= link_to "Delete", @post, method: :delete %>
 <% end %>
 ```
 
