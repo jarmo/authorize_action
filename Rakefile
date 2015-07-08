@@ -17,5 +17,5 @@ def calculate_checksum
   FileUtils.mkdir_p("checksum")
   checksum_file_path = "checksum/#{gem_file_name}.sha512"
   File.open(checksum_file_path, "w" ) {|f| f.write(checksum) }
-  sh %q[git commit -m "Add checksum for #{gem_file_name}." #{checksum_file_path}]
+  sh %Q[git commit -m "Add checksum for #{gem_file_name}." #{checksum_file_path}]
 end
