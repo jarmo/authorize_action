@@ -1,3 +1,7 @@
+### 1.1.1 - 2015/07/08
+
+* Fix gem checksum.
+
 ### 1.1.0 - 2015/07/08
 
 * Sign gem cryptographically and calculate checksum.
