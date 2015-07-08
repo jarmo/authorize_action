@@ -68,6 +68,12 @@ compared to all the rest:
 
 _authorize_action_ is cryptographically signed. To be sure the gem you install hasn’t been tampered with:
 
+* Verify gem checksum:
+
+        $ gem fetch authorize_action && \
+          ruby -rdigest/sha2 -e "puts Digest::SHA512.new.hexdigest(File.read(Dir.glob('authorize_action-*.gem')[0]))" && \
+          curl -Ls https://raw.githubusercontent.com/jarmo/authorize_action/master/checksum/`ls authorize_action-*.gem`.sha512
+
 * Add my public key (if you haven’t already) as a trusted certificate:
 
 `$ gem cert --add <(curl -Ls https://raw.github.com/jarmo/authorize_action/master/certs/jarmo.pem)`
