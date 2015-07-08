@@ -59,21 +59,32 @@ compared to all the rest:
     it's going to follow [Semantic Versioning](http://semver.org/),
     which adds some additional guarantees to developers.
 
+* Is cryptographically **signed**
+  * _authorize_action_ is one of these few gems which are cryptographically signed so you can be sure
+    that the code you're running is signed by me. In addition, I have a [calculated checksum](https://github.com/jarmo/authorize_action/tree/master/checksum) for each gem
+    version to be extra sure.
+
 ## Installation
 
-Add this line to your application's Gemfile:
+_authorize_action_ is cryptographically signed. To be sure the gem you install hasn’t been tampered with:
+
+* Add my public key (if you haven’t already) as a trusted certificate
+
+`gem cert --add <(curl -Ls https://raw.github.com/jarmo/authorize_action/master/certs/jarmo.pem)`
+
+* Add this line to your application's Gemfile:
 
 ```ruby
 gem 'authorize_action'
 ```
 
-And then execute:
+* And then execute:
+ 
+`$ bundle install --trust-policy HighSecurity`
 
-    $ bundle
+* Or install it yourself as:
 
-Or install it yourself as:
-
-    $ gem install authorize_action
+`$ gem install authorize_action --trust-policy HighSecurity`
 
 ## Usage
 
