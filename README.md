@@ -68,9 +68,9 @@ compared to all the rest:
 
 _authorize_action_ is cryptographically signed. To be sure the gem you install hasn’t been tampered with:
 
-* Add my public key (if you haven’t already) as a trusted certificate
+* Add my public key (if you haven’t already) as a trusted certificate:
 
-`gem cert --add <(curl -Ls https://raw.github.com/jarmo/authorize_action/master/certs/jarmo.pem)`
+`$ gem cert --add <(curl -Ls https://raw.github.com/jarmo/authorize_action/master/certs/jarmo.pem)`
 
 * Add this line to your application's Gemfile:
 
