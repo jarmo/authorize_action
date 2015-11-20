@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |spec|
   spec.name          = "authorize_action"
-  spec.version       = "1.1.1"
+  spec.version       = "1.1.2"
   spec.authors       = ["Jarmo Pertman"]
   spec.email         = ["jarmo.p@gmail.com"]
   spec.description   = %q{Really secure and simple authorization library for your Rails, Sinatra or whatever web framework, which just works.}

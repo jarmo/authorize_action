@@ -1,3 +1,7 @@
+### 1.1.2 - 2015/11/20
+
+* Minor wording improvements in README.
+
 ### 1.1.1 - 2015/07/08
 
 * Fix gem checksum.
