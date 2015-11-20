@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.version       = "1.1.1"
   spec.authors       = ["Jarmo Pertman"]
   spec.email         = ["jarmo.p@gmail.com"]
-  spec.description   = %q{Really secure and simple authorization library for your Rails, Sinatra or whatever web framework, which doesn't suck.}
+  spec.description   = %q{Really secure and simple authorization library for your Rails, Sinatra or whatever web framework, which just works.}
   spec.summary       = %q{Really secure and simple authorization library.}
   spec.homepage      = "https://github.com/jarmo/authorize_action"
   spec.license       = "MIT"
