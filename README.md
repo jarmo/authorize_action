@@ -105,6 +105,8 @@ gem 'authorize_action'
 
 ### Rails
 
+Following code has been tested on Rails versions **4** and **5**, but should also work with earlier versions.
+
 ```ruby
 class ApplicationController < ActionController::Base
   # Include authorize_action methods
