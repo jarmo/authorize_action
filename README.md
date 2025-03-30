@@ -9,7 +9,7 @@
 Really **secure** and **simple** authorization library for your [Rails](http://rubyonrails.org/), [Sinatra](http://www.sinatrarb.com/) or whatever web framework, which just works.
 
 According to [Ruby Toolbox](https://www.ruby-toolbox.com/categories/rails_authorization) there are
-at least 28 authorization libraries/frameworks available just for Rails. And yet, they all seem to be overly complex or insecure by default.
+at least 36 authorization libraries/frameworks available just for Rails. And yet, they all seem to be overly complex or insecure by default.
 At least that's why I've never used any of them in my projects.
 All of this is the reason I've finally decided to create my own library to solve
 the problem of authorization once and for all for all Ruby (web) frameworks.
