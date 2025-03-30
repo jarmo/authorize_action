@@ -146,7 +146,7 @@ class PostsController < ApplicationController
     
     # Calling referenced #admin? method for :destroy action
     # returns true only for administrators
-    destroy: -> :admin?
+    destroy: :admin?
   }
 end
 ```
